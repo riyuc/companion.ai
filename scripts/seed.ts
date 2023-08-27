@@ -14,6 +14,7 @@ async function main() {
                 { name: "Philosophy"},
                 { name: "Scientists"},
                 { name: "Racist"},
+                { name: "Artificial Intelligence"},
             ]
         })
     } catch(error){
