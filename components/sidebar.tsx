@@ -23,7 +23,7 @@ export const Sidebar = ({
         },
         {
             icon: Globe,
-            href: "/companion/rooms",
+            href: "/rooms",
             label: "Rooms",
             pro: false,
         },
