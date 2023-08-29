@@ -18,7 +18,7 @@ interface CompanionProps {
     })[];
 }
 
-export const Companions = ({
+export const ListCompanion = ({
     data
 }: CompanionProps) => {
     if(data.length === 0){
