@@ -1,14 +1,37 @@
-import { ListCompanion } from "./components/create-room-form";
+import prismadb from "@/lib/prismadb";
+import { CompanionForm } from "./components/create-room-form";
+import { auth, redirectToSignIn } from "@clerk/nextjs";
 
-const CreateRoom = ({
-    
-}) => {
-    
+interface CompanionIdPageProps {
+    params: {
+        companionId: string;
+    };
+};
+
+const CompanionIdPage = async({
+    params
+}: CompanionIdPageProps) => {
+    const { userId } = auth();
+    //check subscription
+
+    if(!userId){
+        return redirectToSignIn();
+    }
+
+    const companion = await prismadb.companion.findUnique({
+        where: {
+            id: params.companionId,
+            userId
+        }
+    });
+
+    const categories = await prismadb.category.findMany();
+
     return ( 
-        <div>
-            Hello!
-        </div>
+        <CompanionForm 
+            initialData = {companion}
+            categories = {categories}
+        />
      );
 }
- 
-export default CreateRoom;
+export default CompanionIdPage;
