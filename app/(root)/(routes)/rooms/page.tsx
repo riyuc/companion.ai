@@ -23,7 +23,7 @@ const CompanionIdPage = async({
     const categories = await prismadb.category.findMany();
     return ( 
         <CompanionForm 
-            initialData = {companion}
+            initialData = {null}
             categories = {categories}
         />
      );
