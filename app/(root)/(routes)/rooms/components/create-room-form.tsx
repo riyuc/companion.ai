@@ -13,6 +13,7 @@ import { Form,
          FormLabel, 
          FormMessage } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
+import { FancyMultiSelect } from '@/components/ui/fancy-multi-select';
 import { ImageUpload } from "@/components/image-upload";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -120,10 +121,10 @@ export const CompanionForm = ({
                     <div className="space-y-2 w-full">
                         <div>
                             <h3 className="text-lg font-medium">
-                                General Information
+                                Create a chat room
                             </h3>
                             <p className="text-sm text-muted-foreground">
-                                General Information about your Companion
+                               Choose the AIs that you want to add in this chat room!
                             </p>
                         </div>
                         <Separator className="bg-primary/10"/>
@@ -133,11 +134,6 @@ export const CompanionForm = ({
                         render={({ field }) => (
                             <FormItem className="flex flex-col items-center justify-center space-y-4">
                                 <FormControl>
-                                    <ImageUpload 
-                                        disabled={isLoading}
-                                        onChange={field.onChange}
-                                        value={field.value}    
-                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -149,7 +145,7 @@ export const CompanionForm = ({
                             control={form.control}
                             render= {({ field }) =>(
                                 <FormItem className="col-span-2 md:col-span-1">
-                                    <FormLabel>Name</FormLabel>
+                                    <FormLabel>Chat Room Name</FormLabel>
                                     <FormControl>
                                         <Input 
                                             disabled={isLoading}
@@ -158,27 +154,7 @@ export const CompanionForm = ({
                                         /> 
                                     </FormControl>
                                     <FormDescription>
-                                        This is how your AI Companion will be named
-                                    </FormDescription>
-                                    <FormMessage /> 
-                                </FormItem>
-                            )}
-                        />
-                        <FormField 
-                            name="description"
-                            control={form.control}
-                            render= {({ field }) =>(
-                                <FormItem className="col-span-2 md:col-span-1">
-                                    <FormLabel>Description</FormLabel>
-                                    <FormControl>
-                                        <Input 
-                                            disabled={isLoading}
-                                            placeholder="CEO & Co-founder of Tesla, SpaceX"
-                                            {...field}
-                                        /> 
-                                    </FormControl>
-                                    <FormDescription>
-                                        Short description for your AI Companion
+                                        Please choose an appropriate name!
                                     </FormDescription>
                                     <FormMessage /> 
                                 </FormItem>
@@ -189,7 +165,8 @@ export const CompanionForm = ({
                             control={form.control}
                             render= {({ field }) =>(
                                 <FormItem>
-                                    <FormLabel>Category</FormLabel>
+                                    <FormLabel>Add an AI</FormLabel>
+                                    <FancyMultiSelect/>
                                     <Select 
                                         disabled={isLoading}
                                         onValueChange={field.onChange}
@@ -281,7 +258,7 @@ export const CompanionForm = ({
                         />
                         <div className="w-full flex justify-center">
                             <Button size="lg" disabled={isLoading}>
-                                {initialData ? "Edit your companion" : "Create your companion"}
+                                {initialData ? "Create the chat room" : "Edit the chat room"}
                                 <Wand2 className="w-4 h-4 ml-2"/>
                             </Button>
                         </div>
